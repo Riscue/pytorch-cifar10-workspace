@@ -27,20 +27,29 @@ RUN apt-get install -y --no-install-recommends \
 		python3-tk
 RUN rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/eriklindernoren/PyTorch-GAN.git
+WORKDIR /workspace
 RUN git clone https://github.com/kuangliu/pytorch-cifar.git
-RUN git clone https://github.com/jwyang/faster-rcnn.pytorch.git
 
-WORKDIR /workspace/PyTorch-GAN
+WORKDIR /workspace
+RUN git clone https://github.com/eriklindernoren/PyTorch-GAN.git
+WORKDIR PyTorch-GAN
 RUN pip3 install -r requirements.txt
 
-WORKDIR /workspace/faster-rcnn.pytorch
+WORKDIR /workspace
+RUN git clone https://github.com/jwyang/faster-rcnn.pytorch.git
+WORKDIR faster-rcnn.pytorch
 RUN git checkout pytorch-1.0
 RUN mkdir data
 RUN pip3 install -r requirements.txt
-WORKDIR /workspace/faster-rcnn.pytorch/lib
+WORKDIR lib
 RUN python setup.py build develop
 
 WORKDIR /workspace
+RUN git clone https://github.com/matterport/Mask_RCNN.git
+WORKDIR Mask_RCNN
+RUN pip3 install -r requirements.txt
+RUN python3 setup.py install
+
+WORKDIR /workspace
 VOLUME ["/workspace"]
-CMD ["/bin/bash"]
+ENTRYPOINT ["/bin/bash"]
