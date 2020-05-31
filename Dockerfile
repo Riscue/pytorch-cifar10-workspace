@@ -27,6 +27,8 @@ RUN apt-get install -y --no-install-recommends \
 		python3-tk
 RUN rm -rf /var/lib/apt/lists/*
 
+RUN pip3 install wheel
+
 WORKDIR /workspace
 RUN git clone https://github.com/kuangliu/pytorch-cifar.git
 
