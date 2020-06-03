@@ -40,4 +40,4 @@ RUN git clone https://github.com/huyvnphan/PyTorch_CIFAR10.git
 
 WORKDIR $WORKSPACE
 VOLUME $WORKSPACE
-ENTRYPOINT ["/bin/bash"]
+CMD ["/bin/bash"]

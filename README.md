@@ -1,9 +1,9 @@
-# pytorch-workspace
+# pytorch-cifar10-workspace
 
 ## Installation
 ```
-git clone https://github.com/Riscue/pytorch-workspace.git
-cd pytorch-workspace
+git clone https://github.com/Riscue/pytorch-cifar10-workspace.git
+cd pytorch-cifar10-workspace
 ./build.sh
 ./run.sh
 ```

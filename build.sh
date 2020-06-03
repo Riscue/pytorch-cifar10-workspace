@@ -1,2 +1,2 @@
-docker build -t riscue/pytorch_workspace . && \
-docker volume create pytorch_workspace_data
+docker build -t riscue/cifar10_workspace . && \
+docker volume create cifar10_workspace_data
