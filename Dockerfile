@@ -10,7 +10,7 @@ RUN apt-get install -y --no-install-recommends \
         git \
         nano \
         curl \
-		python3-tk
+        python3-tk
 RUN rm -rf /var/lib/apt/lists/*
 RUN pip install pandas matplotlib
 
@@ -32,4 +32,5 @@ RUN git clone https://github.com/Riscue/pytorch-cifar10.git
 
 WORKDIR $WORKSPACE/pytorch-cifar10
 VOLUME $WORKSPACE
-CMD ["/bin/bash"]
+EXPOSE 80
+CMD python -m http.server 80
