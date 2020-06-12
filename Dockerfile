@@ -31,6 +31,9 @@ WORKDIR $WORKSPACE
 RUN git clone https://github.com/Riscue/pytorch-cifar10.git
 
 WORKDIR $WORKSPACE/pytorch-cifar10
+RUN python state_dicts.py -d -e -r
+RUN python -c "import torchvision;torchvision.datasets.CIFAR10(root='./data',download=True)"
+
 VOLUME $WORKSPACE
 EXPOSE 8000
 CMD python -m http.server
